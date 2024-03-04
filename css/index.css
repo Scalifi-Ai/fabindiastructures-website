@@ -1,0 +1,47 @@
+* {
+    font-family: "Outfit", sans-serif;
+}
+
+.fabIndiaWrapper {
+    background-image: url("../images/fab-india-bg.svg");
+    height: 100vh;
+}
+
+.fabIndiaComingSoon {
+    margin: 0 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 4rem;
+    color: #444444;
+}
+
+.fabIndiaComingSoonTitle {
+    text-align: center;
+}
+
+.fabIndiaComingSoonTitle h1 {
+    font-size: 4rem;
+}
+
+.fabIndiaComingSoonTitle h5 {
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+.line {
+    background-color: #C6382F;
+    height: 3px;
+    width: 100%;
+    border-radius: 16px;
+    opacity: 1;
+}
+
+.contactDetails {
+    color: #444444;
+    background-color: #fcf3f2;
+    text-align: center;
+    border: 2px solid #c6382f;
+    border-radius: 8px;
+}
