@@ -13,6 +13,7 @@
     justify-content: center;
     flex-direction: column;
     padding-top: 4rem;
+    padding-bottom: 4rem;
     color: #444444;
 }
 
@@ -40,7 +41,6 @@
 .contactDetails {
     color: #444444;
     background-color: #fcf3f2;
-    text-align: center;
     border: 2px solid #c6382f;
     border-radius: 8px;
 }
