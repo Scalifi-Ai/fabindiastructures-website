@@ -1,6 +1,5 @@
 "use client";
 import { footerData } from "@/data/footer";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Separator } from "../ui/separator";
@@ -91,15 +90,15 @@ export function Footer() {
         </div>
         <div className="flex flex-col items-center justify-between pt-10 pb-5 sm:flex-row border-t border-sky-900">
           <div className="flex gap-4 items-center">
-            <Link href={"/"} className="hover:text-gray-400">
-              <Linkedin />
-            </Link>
-            <Link href={"/"} className="hover:text-gray-400">
-              <Facebook />
-            </Link>
-            <Link href="/" className="hover:text-gray-400">
-              <Instagram />
-            </Link>
+            {footerData?.socialMedia?.map((item, index) => (
+              <Link
+                href={item.link}
+                className="hover:text-gray-400"
+                key={`socialIcons${index}`}
+              >
+                {item.icon}
+              </Link>
+            ))}
           </div>
           <p className="text-sm text-center pt-3">
             Copyright &copy; {currentYear} Fab India

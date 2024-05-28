@@ -1,18 +1,21 @@
+import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { productsPath, solutionsPath } from "./path";
+
 export const footerData = {
     solutions: {
         title: "Our Solutions",
         data: [
             {
                 name: "Event Space",
-                link: '/solutions/event-tents'
+                link: `${solutionsPath.basePath}${solutionsPath.events}`,
             },
             {
                 name: "Commercial Space",
-                link: '/solutions/commercial-tents'
+                link: `${solutionsPath.basePath}${solutionsPath.commercial}`,
             },
             {
                 name: "Easy and quick deployment space",
-                link: '/solutions/quick-and-easy-deployment'
+                link: `${solutionsPath.basePath}${solutionsPath.quickDeploy}`,
             },
 
         ]
@@ -22,19 +25,19 @@ export const footerData = {
         data: [
             {
                 name: "Pagoda Tents",
-                link: '/products/pagoda-tents'
+                link: `${productsPath.basePath}${productsPath.pagoda}`,
             },
             {
                 name: "Military Tents",
-                link: '/products/military-tents'
+                link: `${productsPath.basePath}${productsPath.military}`,
             },
             {
                 name: "Sports Arena",
-                link: '/products/sports-tents'
+                link: `${productsPath.basePath}${productsPath.sports}`,
             },
             {
                 name: "Double Decker Tents",
-                link: '/products/double-decker-tents'
+                link: `${productsPath.basePath}${productsPath.doubleDecker}`,
             }
 
         ]
@@ -45,5 +48,19 @@ export const footerData = {
         phoneOne: "9811079859",
         phoneTwo: "9999600340",
         email: "aryan@pjfabindia.com"
-    }
+    },
+    socialMedia: [
+        {
+            link: "/",
+            icon: <Linkedin />
+        },
+        {
+            link: "/",
+            icon: <Facebook />
+        },
+        {
+            link: "/",
+            icon: <Instagram />
+        },
+    ]
 }

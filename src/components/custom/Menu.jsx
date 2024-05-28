@@ -20,51 +20,13 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
+import { menuList } from "@/data/menu";
+import { aboutUsPath, solutionsPath } from "@/data/path";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
-import { Home, Lightbulb, MenuIcon } from "lucide-react";
+import { Lightbulb, MenuIcon } from "lucide-react";
 import Image from "next/image";
-
-const components = [
-  {
-    title: "All Products",
-    href: "/products/",
-    description: "Take a look at all our products.",
-  },
-  {
-    title: "Pagoda Tents",
-    href: "/products/pagoda-tents",
-    description:
-      "Pagoda Tent features structures with widths of 2x2m, 2.5×2.5m, and 3x3m, the eave height is 2.6m.",
-  },
-  {
-    title: "Military Tents",
-    href: "/products/military-tents",
-    description: "Military tents with high-strength aluminium alloy tubes",
-  },
-  {
-    title: "Sports Arena",
-    href: "/products/military-tents",
-    description:
-      "Sports event tents with special widths, lengths, and different roof heights.",
-  },
-  {
-    title: "Double Decker Tents",
-    href: "/products/military-tents",
-    description:
-      "Double decker design to make area utilization ratio more than 200%.",
-  },
-  {
-    title: "Warehouses",
-    href: "/products/military-tents",
-    description: "Large warehouse movable structure to occupy all your goods.",
-  },
-  {
-    title: "Shelter",
-    href: "/products/military-tents",
-    description: "Shelter tents with flexible dimensions.",
-  },
-];
+import { Separator } from "../ui/separator";
 
 export const Menu = () => {
   const isDesktop = useMediaQuery("(min-width:575px)");
@@ -85,52 +47,46 @@ export const Menu = () => {
             <NavigationMenu>
               <NavigationMenuList className="flex-wrap">
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="text-sky-950">
+                    Solutions
+                  </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                       <li className="row-span-3">
                         <NavigationMenuLink asChild>
                           <a
                             className="flex h-full w-full select-none flex-col justify-center rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                            href="/solutions"
+                            href={menuList.solutions.allSolutions.link}
                           >
                             <Lightbulb className="h-6 w-6" />
-                            <div className="mb-2 mt-4 text-lg font-medium">
-                              All Solutions
+                            <div className="mb-2 mt-4 text-lg font-medium text-sky-950">
+                              {menuList.solutions.allSolutions.title}
                             </div>
                             <p className="text-sm leading-tight text-muted-foreground">
-                              High-quality, product safety, efficiency, flexible
-                              and diversified services
+                              {menuList.solutions.allSolutions.description}
                             </p>
                           </a>
                         </NavigationMenuLink>
                       </li>
-                      <ListItem
-                        href="/solutions/event-tents"
-                        title="Events Space"
-                      >
-                        Wide range of structures perfectly suited for events
-                      </ListItem>
-                      <ListItem
-                        href="/solutions/commercial-tents"
-                        title="Commercial Space"
-                      >
-                        Wide range of structures perfectly suited for events
-                      </ListItem>
-                      <ListItem
-                        href="/solutions/quick-and-easy-deployment"
-                        title="Quick Deployment Space"
-                      >
-                        Wide range of structures perfectly suited for events
-                      </ListItem>
+                      {menuList.solutions.list.map((item, index) => (
+                        <ListItem
+                          href={item.link}
+                          title={item.title}
+                          key={`solutionsMenuList${index}`}
+                        >
+                          {item.description}
+                        </ListItem>
+                      ))}
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="text-sky-950">
+                    Products
+                  </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                      {components.map((component) => (
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] text-sky-950">
+                      {menuList.products.map((component) => (
                         <ListItem
                           key={component.title}
                           title={component.title}
@@ -143,7 +99,7 @@ export const Menu = () => {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="/about-us" passHref>
+                  <Link href={aboutUsPath.basePath} legacyBehavior passHref>
                     <NavigationMenuLink
                       className={navigationMenuTriggerStyle()}
                     >
@@ -164,20 +120,56 @@ export const Menu = () => {
         <SheetTrigger className="">
           <MenuIcon />
         </SheetTrigger>
-        <Image
-          src="/logo.svg"
-          width={0}
-          height={0}
-          alt="fab india logo"
-          className="w-[80px] h-[40px]"
-        />
+        <Link href="/">
+          <Image
+            src="/logo.svg"
+            width={0}
+            height={0}
+            alt="fab india logo"
+            className="w-[80px] h-[40px]"
+          />
+        </Link>
       </div>
-      <SheetContent side="left">
+      <SheetContent
+        side="left"
+        className="w-[250px] bg-neutral-50 min-h-screen flex flex-col p-0 md:pt-0 pt-12"
+      >
         <SheetHeader>
-          <SheetTitle>Are you absolutely sure?</SheetTitle>
-          <SheetDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+          <SheetTitle className="text-left text-zinc-500 px-5">
+            Fab India Structures
+          </SheetTitle>
+          <Separator />
+          <SheetDescription className="px-5 text-sky-950">
+            {
+              <div className="flex flex-col items-start justify-start gap-4">
+                <h4 className="text-xl font-semibold">Solutions</h4>
+                <Link href={solutionsPath.basePath}>All Solutions</Link>
+                {menuList.solutions.list.map((component) => (
+                  <Link
+                    key={component.title}
+                    href={component.link}
+                    className="text-sky-950"
+                  >
+                    {component.title}
+                  </Link>
+                ))}
+                <h4 className="text-xl font-semibold">Products</h4>
+                {menuList.products.map((component) => (
+                  <Link
+                    key={component.title}
+                    href={component.href}
+                    className="text-sky-950"
+                  >
+                    {component.title}
+                  </Link>
+                ))}
+                <h4 className="text-xl font-semibold">
+                  <Link href={aboutUsPath.basePath} className="text-sky-950">
+                    About us
+                  </Link>
+                </h4>
+              </div>
+            }
           </SheetDescription>
         </SheetHeader>
       </SheetContent>

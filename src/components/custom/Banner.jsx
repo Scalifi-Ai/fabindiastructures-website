@@ -21,7 +21,7 @@ export function Banner({ bannerData }) {
         return (
           <div className="relative flex h-fit" key={`bannerImage${index}`}>
             <div className="absolute self-center md:start-[350px] m-5 animate-bounce ease-in-out repeat-1 delay-75 text-left max-w-md rounded text-white bg-gray-950 bg-opacity-70 p-5">
-              <h1>{item.title}</h1>
+              <h1 className="font-semibold text-lg border-b mb-3">{item.title}</h1>
               <p>{item.description}</p>
             </div>
             <Image

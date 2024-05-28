@@ -1,8 +1,12 @@
-const baseProductsPath = "/products"
+export const baseProductsPath = "/products"
 
 export const whatsNew = {
     title: "What's New!",
     subTitle: "Modular structures for flexible needs which includes temporary and permanent solutions",
+    metadata: {
+        title: "Fab India Structures | Products",
+        description: "Innovation with sturdy construction",
+    },
     data: [
         {
             img: "/large-tents.jpg",
@@ -40,6 +44,10 @@ export const allProducts = {
         title: "Pagoda Tents",
         img: "/pagoda-tent.jpg",
         alt: "pagoda tent",
+        metadata: {
+            title: "Fab India Structures | Pagoda Tents",
+            description: "Innovation with sturdy construction",
+        },
         details: {
             title: "General Details",
             description: [

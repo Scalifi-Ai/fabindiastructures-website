@@ -3,7 +3,7 @@ import { Home } from "lucide-react"
 import Link from "next/link"
 
 export const metadata = {
-    title: "PJ Fab India | Page Not Found"
+    title: "Fab India Structures | Page Not Found"
 }
 
 export default function NotFound() {

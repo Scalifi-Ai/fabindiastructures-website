@@ -1,9 +1,12 @@
-
-const baseSolutionsPath = "/solutions"
+import { solutionsPath } from "./path"
 
 export const solutions = {
     title: "Our Solutions",
     subTitle: "A broad range of modular structures to meet your every need",
+    metadata: {
+        title: "Fab India Structures | Solutions",
+        description: "Innovation with sturdy construction",
+    },
     data: [
         {
             img: "/events.jpg",
@@ -12,7 +15,7 @@ export const solutions = {
             title: "Event space",
             description: "Fab India provided the 19th Asian Games with various sports event tents for different purposes, we wish the Asian Games a successful opening.",
             buttonLabel: "Our event solution",
-            link: `${baseSolutionsPath}/event-tents`,
+            link: `${solutionsPath.basePath}${solutionsPath.events}`,
             mobile: "1234567890"
         },
         {
@@ -22,7 +25,7 @@ export const solutions = {
             title: "Commercial Space",
             description: "Fab India provided the 19th Asian Games with various sports event tents for different purposes, we wish the Asian Games a successful opening.",
             buttonLabel: "Our commercial solution",
-            link: `${baseSolutionsPath}/commercial-tents`,
+            link: `${solutionsPath.basePath}${solutionsPath.commercial}`,
             mobile: "1234567890"
         },
         {
@@ -32,7 +35,7 @@ export const solutions = {
             title: "Easy and quick deployment space",
             description: "Fab India provided the 19th Asian Games with various sports event tents for different purposes, we wish the Asian Games a successful opening.",
             buttonLabel: "Our quick deployment solution",
-            link: `${baseSolutionsPath}/quick-and-easy-deployment`,
+            link: `${solutionsPath.basePath}${solutionsPath.quickDeploy}`,
             mobile: "1234567890"
         },
     ]
@@ -42,6 +45,10 @@ export const allSolutions = {
     __parentKey: "Slug of the page",
     "event-tents": {
         title: "Event Tents",
+        metadata: {
+            title: "Fab India Structures | Event Tents",
+            description: "Innovation with sturdy construction",
+        },
         features: [
             {
                 title: "Flexible and convenient",
