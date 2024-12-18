@@ -1,0 +1,48 @@
+{
+    "kind": "collectionType",
+    "collectionName": "per_product_pages",
+    "info": {
+        "singularName": "per-product-page",
+        "pluralName": "per-product-pages",
+        "displayName": "per_product_page",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "product_media": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "general_details": {
+            "type": "richtext"
+        },
+        "product_specifications": {
+            "type": "component",
+            "repeatable": true,
+            "component": "products.product-specification"
+        },
+        "drawing_3d": {
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ],
+            "type": "media",
+            "multiple": false
+        }
+    }
+}

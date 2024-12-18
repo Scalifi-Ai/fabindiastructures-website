@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_general_carousel_slides",
+  "info": {
+    "displayName": "carousel_slide",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "description": {
+      "type": "text"
+    },
+    "carousel_slide_media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

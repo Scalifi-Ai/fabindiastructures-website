@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_general_page_configs",
+  "info": {
+    "displayName": "page_config"
+  },
+  "options": {},
+  "attributes": {
+    "header_present": {
+      "type": "boolean"
+    },
+    "footer_present": {
+      "type": "boolean"
+    },
+    "url": {
+      "type": "string"
+    },
+    "seo": {
+      "displayName": "seo",
+      "type": "component",
+      "repeatable": false,
+      "component": "general.seo"
+    }
+  }
+}

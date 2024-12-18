@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "products": {
+      "type": "component",
+      "repeatable": false,
+      "component": "products.product-card-section"
+    }
+  }
+}
