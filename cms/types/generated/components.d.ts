@@ -166,7 +166,7 @@ export interface ProductsProductCardAction extends Struct.ComponentSchema {
     label: Schema.Attribute.String;
     type: Schema.Attribute.Enumeration<['link', 'button']>;
     variant: Schema.Attribute.Enumeration<
-      ['primary', 'secondary', 'outlined', 'link', 'disabled']
+      ['primary', 'secondary', 'outline', 'link', 'disabled']
     >;
   };
 }

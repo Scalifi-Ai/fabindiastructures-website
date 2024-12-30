@@ -35,14 +35,26 @@
       "component": "products.product-specification"
     },
     "drawing_3d": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "per_product_pages"
+    },
+    "page_config": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.page-config"
     }
   }
 }

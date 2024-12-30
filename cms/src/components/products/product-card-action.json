@@ -21,7 +21,7 @@
       "enum": [
         "primary",
         "secondary",
-        "outlined",
+        "outline",
         "link",
         "disabled"
       ]

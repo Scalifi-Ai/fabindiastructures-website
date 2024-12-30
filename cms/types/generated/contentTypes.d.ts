@@ -414,7 +414,6 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     blocks: Schema.Attribute.DynamicZone<
       ['shared.media', 'shared.quote', 'shared.rich-text', 'shared.slider']
     >;
-    category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
     cover: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -482,11 +481,9 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -494,6 +491,11 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    page_config: Schema.Attribute.Component<'general.page-config', false>;
+    per_product_pages: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::per-product-page.per-product-page'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID;
     updatedAt: Schema.Attribute.DateTime;
@@ -583,6 +585,7 @@ export interface ApiPerProductPagePerProductPage
     draftAndPublish: true;
   };
   attributes: {
+    category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -596,6 +599,7 @@ export interface ApiPerProductPagePerProductPage
       'api::per-product-page.per-product-page'
     > &
       Schema.Attribute.Private;
+    page_config: Schema.Attribute.Component<'general.page-config', false>;
     product_media: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
@@ -633,6 +637,7 @@ export interface ApiProductProduct extends Struct.SingleTypeSchema {
       'api::product.product'
     > &
       Schema.Attribute.Private;
+    page_config: Schema.Attribute.Component<'general.page-config', false>;
     products: Schema.Attribute.Component<
       'products.product-card-section',
       false

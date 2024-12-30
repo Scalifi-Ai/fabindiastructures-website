@@ -16,6 +16,11 @@
             "type": "component",
             "repeatable": false,
             "component": "products.product-card-section"
+        },
+        "page_config": {
+            "type": "component",
+            "repeatable": false,
+            "component": "general.page-config"
         }
     }
 }

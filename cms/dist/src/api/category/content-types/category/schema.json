@@ -18,14 +18,16 @@
         "slug": {
             "type": "uid"
         },
-        "articles": {
+        "per_product_pages": {
             "type": "relation",
             "relation": "oneToMany",
-            "target": "api::article.article",
+            "target": "api::per-product-page.per-product-page",
             "mappedBy": "category"
         },
-        "description": {
-            "type": "text"
+        "page_config": {
+            "type": "component",
+            "repeatable": false,
+            "component": "general.page-config"
         }
     }
 }

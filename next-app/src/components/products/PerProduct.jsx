@@ -1,10 +1,9 @@
+"use client";
 import { allProducts } from "@/data/products";
-import { getColumns } from "@/lib/utils";
 import { BookOpenText, Box, Mails, ReceiptText } from "lucide-react";
+import Markdown from "markdown-to-jsx";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { DataTable } from "../custom/DataTable";
 import {
   Accordion,
   AccordionContent,
@@ -14,17 +13,15 @@ import {
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
 
-export const PerProduct = ({ params }) => {
-  if (params in allProducts === false) {
-    notFound();
-  }
+export const PerProduct = ({ productPage }) => {
+  console.log("productPage", productPage);
 
   return (
     <>
       <div className="bg-sky-950 text-white md:p-10">
         <div className="container grid sm:grid-cols-2 gap-4 place-items-center">
           <h2 className="w-full md:text-4xl text-2xl h-24 flex items-center pe-6">
-            {allProducts[params]?.title}
+            {productPage?.title}
           </h2>
         </div>
       </div>
@@ -32,22 +29,18 @@ export const PerProduct = ({ params }) => {
         <div className="grid md:grid-cols-2">
           <div className=" flex flex-col gap-4 mx-3">
             <div className="bg-zinc-50">
-              <Image
-                src={allProducts[params]?.img}
-                alt={allProducts[params]?.alt}
-                className="w-full aspect-square object-contain "
-                sizes="900px"
-                width={100}
-                height={200}
-                priority={true}
-              />
+              {productPage?.product_media && productPage?.product_media !== null &&
+                <Image
+                  src={allProducts[params]?.img}
+                  alt={allProducts[params]?.alt}
+                  className="w-full aspect-square object-contain "
+                  sizes="900px"
+                  width={100}
+                  height={200}
+                  priority={true}
+                />
+              }
             </div>
-            <Link href="mailto:aryan@pjfabindia.com">
-              <Button variant="default" className="bg-sky-950 text-base w-fit">
-                <Mails className="h-6 w-6 mr-2" />
-                Request a Quote
-              </Button>
-            </Link>
           </div>
           <div className="flex flex-col gap-4 px-3 border-s">
             <Separator />
@@ -61,36 +54,45 @@ export const PerProduct = ({ params }) => {
                 <AccordionTrigger>
                   <h2 className="text-xl font-semibold flex items-center gap-3 text-sky-950">
                     <ReceiptText />
-                    {allProducts[params]?.details?.title}
+                    General Details
                   </h2>
                 </AccordionTrigger>
                 <AccordionContent>
-                  {allProducts[params]?.details?.description?.map(
-                    (item, index) => (
-                      <p key={`productDesc${index}`} className="my-3 text-base">
-                        {item}
-                      </p>
-                    )
-                  )}
+                  {/* {productPage?.general_details} */}
+                  <Markdown
+                    options={{
+                      overrides: {
+                        ul: {
+                          props: {
+                            className: "ps-5 list-disc"
+                          }
+                        }
+                      }
+                    }}
+                  >
+                    {productPage?.general_details}
+                  </Markdown>
                 </AccordionContent>
               </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger>
-                  <h2 className="text-xl font-semibold flex items-center gap-3 text-sky-950">
-                    <BookOpenText />
-                    {allProducts[params]?.specifications?.title}
-                  </h2>
-                </AccordionTrigger>
-                <AccordionContent>
-                  <DataTable
+              {productPage?.product_specifications !== undefined && productPage?.product_specifications !== null && productPage?.product_specifications?.length > 0 &&
+                <AccordionItem value="item-2">
+                  <AccordionTrigger>
+                    <h2 className="text-xl font-semibold flex items-center gap-3 text-sky-950">
+                      <BookOpenText />
+                      {/* {allProducts[params]?.specifications?.title} */}
+                    </h2>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    {/* <DataTable
                     data={allProducts[params]?.specifications?.table}
                     columns={getColumns(
                       allProducts[params]?.specifications?.table
                     )}
-                  />
-                </AccordionContent>
-              </AccordionItem>
-              {allProducts[params]?.["3dDrawing"]?.img && (
+                  /> */}
+                  </AccordionContent>
+                </AccordionItem>
+              }
+              {productPage?.drawing_3d !== null && productPage?.drawing_3d !== undefined &&
                 <AccordionItem value="item-3">
                   <AccordionTrigger>
                     <h2 className="text-xl font-semibold flex items-center gap-3 text-sky-950">
@@ -113,8 +115,16 @@ export const PerProduct = ({ params }) => {
                     </div>
                   </AccordionContent>
                 </AccordionItem>
-              )}
+              }
             </Accordion>
+          </div>
+          <div>
+            <Link href="mailto:aryan@pjfabindia.com">
+              <Button variant="default" className="bg-sky-950 text-base w-fit">
+                <Mails className="h-6 w-6 mr-2" />
+                Request a Quote
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
