@@ -12,6 +12,8 @@ import {
 } from "../ui/accordion";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
+import { DataTable } from "../custom/DataTable";
+import { getColumns } from "@/lib/utils";
 
 export const PerProduct = ({ productPage }) => {
   console.log("productPage", productPage);
@@ -29,10 +31,10 @@ export const PerProduct = ({ productPage }) => {
         <div className="grid md:grid-cols-2">
           <div className=" flex flex-col gap-4 mx-3">
             <div className="bg-zinc-50">
-              {productPage?.product_media && productPage?.product_media !== null &&
+              {productPage?.product_media && productPage?.product_media !== null && productPage?.product_media?.length > 0 &&
                 <Image
-                  src={allProducts[params]?.img}
-                  alt={allProducts[params]?.alt}
+                  src={productPage?.product_media[0]?.url ? `${process?.env?.NEXT_PUBLIC_STRAPI_SERVER_URL ?? "http://127.0.0.1:1337"}${productPage?.product_media[0]?.url}` : "/fallback.svg"}
+                  alt={productPage?.product_media[0]?.alternativeText ?? productPage?.title}
                   className="w-full aspect-square object-contain "
                   sizes="900px"
                   width={100}
@@ -80,15 +82,16 @@ export const PerProduct = ({ productPage }) => {
                     <h2 className="text-xl font-semibold flex items-center gap-3 text-sky-950">
                       <BookOpenText />
                       {/* {allProducts[params]?.specifications?.title} */}
+                      Product Specifications
                     </h2>
                   </AccordionTrigger>
                   <AccordionContent>
-                    {/* <DataTable
-                    data={allProducts[params]?.specifications?.table}
-                    columns={getColumns(
-                      allProducts[params]?.specifications?.table
-                    )}
-                  /> */}
+                    <DataTable
+                      data={productPage?.product_specifications}
+                      columns={getColumns(
+                        productPage?.product_specifications
+                      )}
+                    />
                   </AccordionContent>
                 </AccordionItem>
               }
@@ -97,14 +100,14 @@ export const PerProduct = ({ productPage }) => {
                   <AccordionTrigger>
                     <h2 className="text-xl font-semibold flex items-center gap-3 text-sky-950">
                       <Box />
-                      {allProducts[params]?.["3dDrawing"]?.title}
+                      3D Drawing
                     </h2>
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="bg-zinc-50">
                       <Image
-                        src={allProducts[params]?.["3dDrawing"]?.img}
-                        alt={allProducts[params]?.alt}
+                        src={productPage?.drawing_3d?.url ? `${process?.env?.NEXT_PUBLIC_STRAPI_SERVER_URL ?? "http://127.0.0.1:1337"}${productPage?.drawing_3d?.url}` : "/fallback.svg"}
+                        alt={productPage?.drawing_3d?.alternativeText ?? `${productPage?.title} 3D Drawing`}
                         className="w-full aspect-square object-contain "
                         sizes="900px"
                         width={100}
