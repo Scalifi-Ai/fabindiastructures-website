@@ -7,9 +7,8 @@ alias navigate_to_db_data="cd ./db_data && echo '--> Inside DB data folder'"
 
 navigate_to_base_dir
 
-sudo chown 1000:1000 db_data
-sudo chown 1000:1000 db_data/*
-sudo chown 1000:1000 db_data/**
+sudo chown -R $USER:$USER db_data
+sudo chmod -R 700 db_data
 
 mkdir -p db_data/pg_tblspc
 mkdir -p db_data/pg_snapshots
