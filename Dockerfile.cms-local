@@ -1,0 +1,29 @@
+FROM node:18-alpine AS BASE
+
+# Installing libvips-dev for sharp Compatibility
+RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev git
+
+WORKDIR /app
+
+COPY cms/package.json ./
+
+RUN npm install -g node-gyp
+RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install
+
+# Build dev
+FROM node:18-alpine AS DEV
+
+# Installing libvips-dev for sharp Compatibility
+RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev git
+
+WORKDIR /app
+
+COPY --from=BASE /app/package-lock.json ./
+COPY --from=BASE /app/package.json ./
+COPY --from=BASE /app/node_modules/. ./node_modules/
+
+COPY /cms/. /app/
+
+RUN npm run build
+
+CMD npm run develop

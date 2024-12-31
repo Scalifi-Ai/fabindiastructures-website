@@ -1,0 +1,46 @@
+version: "3"
+services:
+
+  db:
+    user: root
+    container_name: db
+    restart: unless-stopped
+    env_file: .env.local
+    image: postgres:16.1-alpine
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+      PGDATA: /pg_data
+    volumes:
+      - ./db_data:/pg_data:z
+    ports:
+      - "5432:5432"
+  
+  cms-server:
+    container_name: cms-server
+    build:
+      dockerfile: Dockerfile.cms-local
+    restart: unless-stopped
+    env_file: .env.local
+    environment:
+      DATABASE_HOST: db
+    volumes:
+      - ./cms/config:/app/config
+      - ./cms/src:/app/src
+      - ./.env:/app/.env
+      - ./cms/public/uploads:/app/public/uploads
+    ports:
+      - "1340:1340"
+    depends_on:
+      - db
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - 5055:80
+    restart: unless-stopped
