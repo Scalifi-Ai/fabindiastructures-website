@@ -22,7 +22,7 @@ export const fetchApiCall = async (endpoint) => {
     const resulting = await fetch(`${endpoint}`, {
       'method': "Get",
       'headers': {
-        'Authorization': "Bearer 47256b0004895fe473d7dfedf7add0d5a7d739cf8f936a9c4f04f0e4d8b183760a8d1de32a80cd606cc993d45b6840a7b1495ae33612ca6f50dccae6efc3288f063c1a1ab082be83615c526a018d83c9951724babc0f94bb020a87db58b875591dade328f5c6e91b0996a8e5013e209772f5c08acb1a92168e55a71046c3a297"
+        'Authorization': "Bearer 4646ccb6c3ebf3790401963f0830dfaed7e007a950bb672298a9264cbb8a5cfc4f9ddea828d60f15bbee3dda6c76f71dd9526d19508f62975eb263a6a87745fbbefc1d2664918ec9800970bdd68aceb37628d2213180419c831a6011584997ba7760728591ce31cd375d2fd7e116269fa5b9bcd764ec9c8214df78fcd33edd70"
       }
     });
     const statusCode = resulting.status;
