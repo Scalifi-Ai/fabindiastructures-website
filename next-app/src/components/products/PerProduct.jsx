@@ -120,14 +120,14 @@ export const PerProduct = ({ productPage }) => {
                 </AccordionItem>
               }
             </Accordion>
-          </div>
-          <div>
-            <Link href="mailto:aryan@pjfabindia.com">
-              <Button variant="default" className="bg-sky-950 text-base w-fit">
-                <Mails className="h-6 w-6 mr-2" />
-                Request a Quote
-              </Button>
-            </Link>
+            <div className="pt-5">
+              <Link href="mailto:aryan@pjfabindia.com">
+                <Button variant="default" className="bg-sky-950 text-base w-fit">
+                  <Mails className="h-6 w-6 mr-2" />
+                  Request a Quote
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
