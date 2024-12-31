@@ -1,0 +1,40 @@
+{
+    "collectionName": "components_products_product_cards",
+    "info": {
+        "displayName": "product_card",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "description": {
+            "type": "text"
+        },
+        "card_media": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "extra_data": {
+            "type": "json"
+        },
+        "product_page": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::per-product-page.per-product-page"
+        },
+        "card_action": {
+            "type": "component",
+            "repeatable": true,
+            "component": "products.product-card-action"
+        }
+    }
+}

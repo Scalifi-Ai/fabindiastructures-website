@@ -1,0 +1,21 @@
+{
+    "collectionName": "components_products_product_specifications",
+    "info": {
+        "displayName": "product_specification"
+    },
+    "options": {},
+    "attributes": {
+        "span_width": {
+            "type": "string"
+        },
+        "eave_height": {
+            "type": "string"
+        },
+        "ridge_height": {
+            "type": "string"
+        },
+        "main_profile": {
+            "type": "string"
+        }
+    }
+}

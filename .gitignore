@@ -1,16 +1,17 @@
 # dependencies
-/node_modules
+**/*/node_modules
 /.pnp
 .pnp.js
 .yarn/install-state.gz
-/package-lock.json
+**/*/package-lock.json
 
 # testing
 /coverage
 
 # next.js
-/.next/
-/out/
+**/*/.next/
+**/*/out/
+**/*/dist
 
 # production
 /build
